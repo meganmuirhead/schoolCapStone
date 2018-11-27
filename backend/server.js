@@ -1,10 +1,13 @@
 
+const express = require('express')
+// const app = express()
+
 // getting port this way
 let port = process.env.PORT || process.argv[2] || 8080;
-import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
+// import express from 'express';
+const cors = require('cors');
+const bodyParser =require('body-parser');
+const mongoose =require('mongoose');
 
 import Issue from './models/Issue';
 
@@ -78,7 +81,7 @@ router.route('/issues/delete/:id').get((req, res) => {
     else
       res.json('Remove successfully');
   })
-})
+});
 
 app.use('/', router);
 

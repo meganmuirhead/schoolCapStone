@@ -3,30 +3,36 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ListComponent } from './components/list/list.component';
-import { CreateComponent } from './components/create/create.component';
-import { EditComponent } from './components/edit/edit.component';
-import { MatToolbarModule } from '@angular/material';
+import { PostCreateComponent } from './posts/post-create/post-create.component';
+import {MatButtonModule, MatCardModule, MatExpansionModule, MatInputModule, MatToolbarModule} from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import {HeaderComponent} from './header/header.component';
+import {PostListComponent} from './posts/post-list/post-list.component';
 
 const routes: Routes = [
-  { path: 'create', component: CreateComponent },
-  { path: 'edit/:id', component: EditComponent },
-  { path: 'list', component: ListComponent },
-  { path: '', redirectTo: 'list', pathMatch: 'full' }
+  // { path: 'create', component: CreateComponent },
+  // { path: 'edit/:id', component: EditComponent },
+  // { path: 'list', component: ListComponent },
+  // { path: '', redirectTo: 'list', pathMatch: 'full' }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
-    CreateComponent,
-    EditComponent
+    PostCreateComponent,
+    HeaderComponent,
+    PostListComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
-    MatToolbarModule
+    MatToolbarModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
