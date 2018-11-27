@@ -8,6 +8,7 @@ import {MatButtonModule, MatCardModule, MatExpansionModule, MatInputModule, MatT
 import { FormsModule } from '@angular/forms';
 import {HeaderComponent} from './header/header.component';
 import {PostListComponent} from './posts/post-list/post-list.component';
+import {PostsService} from './posts/posts.service';
 
 const routes: Routes = [
   // { path: 'create', component: CreateComponent },
@@ -34,7 +35,7 @@ const routes: Routes = [
     MatToolbarModule,
     MatExpansionModule
   ],
-  providers: [],
+  providers: [PostsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
