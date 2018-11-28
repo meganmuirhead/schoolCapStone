@@ -8,6 +8,7 @@
         ngModel
       required
       minlength="3"
+      placeholder="Post Title"
       #title="ngModel">
       <mat-error *ngIf="title.invalid">{{ pleaseTitle }}</mat-error>
     </mat-form-field>
@@ -19,7 +20,8 @@
         ngModel
       required
       minlength="3"
-      #content="ngModel"></textarea>
+        placeholder="Post Content"
+        #content="ngModel"></textarea>
       <mat-error *ngIf="content.invalid">{{ pleaseContent }}</mat-error>
 
     </mat-form-field>
