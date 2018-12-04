@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import {HeaderComponent} from './header/header.component';
 import {PostListComponent} from './posts/post-list/post-list.component';
 import {PostsService} from './posts/posts.service';
+import { HttpClientModule} from '@angular/common/http';
 
 const routes: Routes = [
   // { path: 'create', component: CreateComponent },
@@ -33,7 +34,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     MatToolbarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    HttpClientModule
   ],
   providers: [PostsService],
   bootstrap: [AppComponent]
