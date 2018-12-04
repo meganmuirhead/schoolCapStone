@@ -7,17 +7,20 @@ app.use('/api/posts', (req, res, next) => {
   // res.send('Hello from express');
   const posts = [
     {
-      id: '3o23jfa',
-      title: 'First server-side post',
-      content: 'this is coming from the server'
+      id: "3o23jfa",
+      title: "First server-side post",
+      content: "this is coming from the server"
     },
     {
-      id: 'dod23jfadadfa',
-      title: 'Second server-side post',
-      content: 'this is coming from the server!'
+      id: "dod23jfadadfa",
+      title: "Second server-side post",
+      content: "this is coming from the server!"
     }
   ];
-  res.json();
+  res.status(200).json({
+    message: "posts fetched successfully!",
+    posts: posts
+  });
 });
 
 
