@@ -57,10 +57,14 @@ app.get('/api/posts', (req, res, next) => {
   //   }
   // ];
   //want to fetch data from posts collection
-  Post.find();
-  res.status(200).json({
-    message: "posts fetched successfully!",
-    posts: posts
+
+  Post.find()
+    .then(documents => {
+      console.log(documents);
+      res.status(200).json({
+        message: "posts fetched successfully!",
+        posts: documents
+    });
   });
 });
 
