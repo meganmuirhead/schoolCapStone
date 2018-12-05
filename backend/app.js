@@ -26,6 +26,7 @@ app.post("/api/posts", (req, res, next) => {
 //target this path "/api/posts" to reach some code
 app.get('/api/posts', (req, res, next) => {
   // res.send('Hello from express');
+  // s02FazbMz5V9AERVpo
   const posts = [
     {
       id: "3o23jfa",
