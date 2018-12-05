@@ -1,5 +1,9 @@
 const express = require('express');
+const bodyParser = require("body-parser");
+
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -11,8 +15,16 @@ app.use((req, res, next) => {
   next();
 });
 
+// only triggered for incoming post requests
+app.post("/api/posts", (req, res, next) => {
+  const post = req.body;
+  console.log(post);
+  res.status(201).json({
+    message: "Post added successfully!"
+  });
+});
 //target this path "/api/posts" to reach some code
-app.use('/api/posts', (req, res, next) => {
+app.get('/api/posts', (req, res, next) => {
   // res.send('Hello from express');
   const posts = [
     {
