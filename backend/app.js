@@ -34,11 +34,15 @@ app.post("/api/posts", (req, res, next) => {
     content: req.body.content
   });
   // automatically creates the right query to insert the right data into the db
-  post.save();
-  console.log(post);
-  res.status(201).json({
-    message: "Post added successfully!"
+  post.save().then(result => {
+    console.log(result);
+    res.status(201).json({
+      message: "Post added successfully!",
+      postId: resultOfCreatedPost._id
+    });
   });
+  console.log(post);
+
 });
 //target this path "/api/posts" to reach some code
 app.get('/api/posts', (req, res, next) => {
@@ -67,6 +71,12 @@ app.get('/api/posts', (req, res, next) => {
     });
   });
 });
-
-
+// delete from database
+app.delete("/api/posts/:id", (req, res, next) => {
+  console.log(req.params.id);
+  Post.deleteOne({_id: req.params.id}).then(result => {
+    console.log(result);
+    res.status(200).json({ message: "Post deleted!"});
+  })
+});
 module.exports = app;
