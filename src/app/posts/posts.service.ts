@@ -37,14 +37,9 @@ export class PostsService {
   }
 
 
-  // @ts-ignore
-  // getPosts() {
-  //   return [...this.posts];
-  // }
-  // getPostUpdateListener() {
-  //   return this.postsUpdated.asObservable();
-  // }
-  // @ts-ignore
+ getPost(id: string) {
+   return {...this.posts.find(post => post.id === id)};
+ }
   addPost(title: string, content: string) {
     const post: Post = {id: null, title: title, content: content};
     this.http
