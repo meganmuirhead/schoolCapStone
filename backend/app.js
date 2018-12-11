@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
 const Post = require("./models/post");
 
-mongoose.connect('mongodb+srv://megaboty:s02FazbMz5V9AERVpo@finalschoolproject-tjz1z.mongodb.net/node-angular?retryWrites=true')
+mongoose.connect('mongodb+srv://megaboty:2sbVjmvSi5CHAwYt@finalschoolproject-tjz1z.mongodb.net/node-angular?retryWrites=true')
   .then(() => {
     console.log("Connected to database!");
   })
@@ -48,6 +48,7 @@ app.post("/api/posts", (req, res, next) => {
 app.get('/api/posts', (req, res, next) => {
   // res.send('Hello from express');
   // s02FazbMz5V9AERVpo
+  // sMFsxic8AkUEGDSa
   // const posts = [
   //   {
   //     id: "3o23jfa",

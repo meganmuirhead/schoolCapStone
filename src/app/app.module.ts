@@ -10,6 +10,7 @@ import {HeaderComponent} from './header/header.component';
 import {PostListComponent} from './posts/post-list/post-list.component';
 import {PostsService} from './posts/posts.service';
 import { HttpClientModule} from '@angular/common/http';
+import {AppRoutingModule} from './app-routing.module';
 
 const routes: Routes = [
   // { path: 'create', component: CreateComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     FormsModule,
     MatInputModule,
     MatCardModule,
