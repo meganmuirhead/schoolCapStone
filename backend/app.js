@@ -22,7 +22,7 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS"
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
   next();
 });
@@ -34,35 +34,30 @@ app.post("/api/posts", (req, res, next) => {
     content: req.body.content
   });
   // automatically creates the right query to insert the right data into the db
-  post.save().then(result => {
-    console.log(result);
+  post.save().then(resultOfCreatedPost => {
     res.status(201).json({
       message: "Post added successfully!",
       postId: resultOfCreatedPost._id
     });
   });
-  console.log(post);
-
 });
-//target this path "/api/posts" to reach some code
-app.get('/api/posts', (req, res, next) => {
-  // res.send('Hello from express');
-  // s02FazbMz5V9AERVpo
-  // sMFsxic8AkUEGDSa
-  // const posts = [
-  //   {
-  //     id: "3o23jfa",
-  //     title: "First server-side post",
-  //     content: "this is coming from the server"
-  //   },
-  //   {
-  //     id: "dod23jfadadfa",
-  //     title: "Second server-side post",
-  //     content: "this is coming from the server!"
-  //   }
-  // ];
-  //want to fetch data from posts collection
+//update existing resource is patch
 
+app.put("/api/posts/:id", (req, res, next) => {
+  const post = new Post({
+    _id: req.body.id,
+    title: req.body.title,
+    content: req.body.content
+  });
+  Post.updateOne({_id: req.params.id}, post).then(result => {
+    console.log(result);
+    res.status(200).json({message: "Updated Successful!"});
+  });
+});
+
+//target this path "/apçi/posts" to reach some code
+app.get('/api/posts', (req, res, next) => {
+  //want to fetch data from posts collection
   Post.find()
     .then(documents => {
       console.log(documents);

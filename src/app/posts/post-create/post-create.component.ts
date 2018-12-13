@@ -14,22 +14,25 @@ export class PostCreateComponent implements OnInit {
   enteredTitle = '';
   private mode = 'create';
   private postId: string;
-  private post: Post;
+  post: Post;
   pleaseTitle = 'Please Enter a Post Title!';
   pleaseContent = 'Please Enter Valid Content!';
   // @Output() postCreated = new EventEmitter<Post>();
   constructor(public  postsService: PostsService, public route: ActivatedRoute) {}
 
-  onAddPost(form: NgForm) {
+  onSavePost(form: NgForm) {
     if (form.invalid) {
       return;
     }
-    // const post: Post = {
-    //   id: null,
-    //   title: form.value.title,
-    //   content: form.value.content
-    // };
-    this.postsService.addPost(form.value.title, form.value.content);
+    if (this.mode === 'create') {
+      this.postsService.addPost(form.value.title, form.value.content);
+    } else {
+      this.postsService.updatePost(
+        this.postId,
+        form.value.title,
+        form.value.content
+      );
+    }
     form.resetForm();
   }
 
